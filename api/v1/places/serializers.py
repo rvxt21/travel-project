@@ -50,3 +50,17 @@ class PlaceCreateSerializer(serializers.Serializer):
     def create(self, validated_data):
 
         return Place.objects.create(**validated_data)
+
+
+class PlaceUpdateSerializer(serializers.Serializer):
+    notes = serializers.CharField(required=False, allow_blank=True)
+    is_visited = serializers.BooleanField(required=False)
+
+    def update(self, instance, validated_data):
+        instance.notes = validated_data.get("notes", instance.notes)
+        instance.is_visited = validated_data.get(
+            "is_visited", instance.is_visited
+        )
+
+        instance.save()
+        return instance
