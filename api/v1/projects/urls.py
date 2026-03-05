@@ -9,4 +9,9 @@ urlpatterns = [
         views.TravelProjectDeleteAPI.as_view(),
         name="project-delete",
     ),
+    path(
+        "update/<int:pk>/",
+        views.TravelProjectUpdateAPI.as_view(),
+        name="project-update",
+    ),
 ]
