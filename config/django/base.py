@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "places",
     "rest_framework",
     "drf_spectacular",
+    "api",
 ]
 
 MIDDLEWARE = [
