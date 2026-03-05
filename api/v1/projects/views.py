@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.response import Response
 from rest_framework.request import Request
+from api.v1.pagination import DefaultPagination
 from api.v1.projects.serializers import (
     TravelProjectDisplaySerializer,
     TravelProjectUpdateSerializer,
@@ -13,6 +14,7 @@ from projects.models import TravelProject
 class TravelProjectListApi(ListAPIView):
     queryset = TravelProject.objects.all()
     serializer_class = TravelProjectDisplaySerializer
+    pagination_class = DefaultPagination
 
 
 class TravelProjectDeleteAPI(GenericAPIView):
