@@ -12,3 +12,6 @@ class TravelProject(models.Model):
     status = models.CharField(
         max_length=15, choices=StatusChoice.choices, default=StatusChoice.OPEN
     )
+
+    def __str__(self):
+        return self.name
