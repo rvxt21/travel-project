@@ -34,3 +34,9 @@ class TravelProjectUpdateSerializer(serializers.Serializer):
 
         instance.save()
         return instance
+
+
+class TravelProjectPlacesDisplaySerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    name = serializers.CharField()
+    places = PlaceDisplaySerializer(many=True, read_only=True)

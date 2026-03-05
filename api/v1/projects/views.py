@@ -7,6 +7,7 @@ from api.v1.pagination import DefaultPagination
 from api.v1.projects.serializers import (
     TravelProjectDisplaySerializer,
     TravelProjectUpdateSerializer,
+    TravelProjectPlacesDisplaySerializer,
 )
 from projects.models import TravelProject
 
@@ -50,3 +51,11 @@ class TravelProjectUpdateAPI(GenericAPIView):
             )
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class TravelProjectPlacesAPI(GenericAPIView):
+    def get(self, request: Request, pk: int):
+        project = get_object_or_404(TravelProject, pk=pk)
+
+        serializer = TravelProjectPlacesDisplaySerializer(project)
+        return Response(serializer.data, status=status.HTTP_200_OK)

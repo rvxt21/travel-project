@@ -14,4 +14,9 @@ urlpatterns = [
         views.TravelProjectUpdateAPI.as_view(),
         name="project-update",
     ),
+    path(
+        "<int:pk>/places/",
+        views.TravelProjectPlacesAPI.as_view(),
+        name="project-places",
+    ),
 ]
